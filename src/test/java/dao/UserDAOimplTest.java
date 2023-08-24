@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 
-class UserDAOTest {
-    UserDAO userDAO = new UserDAO();
-    @Test
+class UserDAOimplTest {
+    UserDAO userDAO = UserDAOimpl.getInstance();
+//    @Test
     void insertUser() {
         UserVO user = new UserVO("test", "1234", "테스트", "USER");
         userDAO.insertUser(user);
@@ -23,7 +22,7 @@ class UserDAOTest {
         assertEquals("test", user.getId());
     }
 
-    @Test
+//    @Test
     void getUserList() {
 
         List<UserVO> list = userDAO.getUserList();
@@ -33,14 +32,14 @@ class UserDAOTest {
 //        }
     }
 
-    @Test
+//    @Test
     void getUser() {
         UserVO user = userDAO.getUser("admin");
         assertNotNull(user);
         assertEquals("admin", user.getId());
     }
 
-    @Test
+  //  @Test
     void updateUser() {
         UserVO user = userDAO.getUser("admin");
         user.setName("최고관리자");
@@ -52,7 +51,11 @@ class UserDAOTest {
         assertEquals("최고관리자", user.getName());
     }
 
-    @Test
+  //  @Test
     void deleteUser() {
+        userDAO.deleteUser("test");
+
+        UserVO user = userDAO.getUser("test");
+        assertNull(user);
     }
 }

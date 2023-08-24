@@ -1,5 +1,3 @@
-package test;
-
 import common.JDBCUtil;
 
 import java.sql.Connection;

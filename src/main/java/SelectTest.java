@@ -1,4 +1,4 @@
-package common;
+import common.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
